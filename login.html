@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="container">
+    <h1>LOGIN</h1>
+    <br>
+    <label for="entemail">
+        Email : 
+        <input required type="text" id="entemail" placeholder="Enter Email" >
+    </label>
+    <br><br><br>
+
+    <label for="entpass">
+        Password : 
+        <input required type="text" id="entpass" placeholder="Enter Password" >
+    </label>
+    <br><br><br>
+
+    <button onclick="Login()">LogIn</button>
+    <br>    
+</div>
+
+<script>
+
+function Login(){
+
+    let userlogemail = document.getElementById("entemail").value
+    let storemail = localStorage.getItem("UserEmail")
+    
+    let userlogpass = document.getElementById("entpass").value
+    let storepass = localStorage.getItem("UserPassword")
+    
+    if(userlogemail == storemail){
+    
+        if(userlogpass == storepass){
+            alert("You Are Sucessfully LogIn")
+            userlogemail = document.getElementById("entemail").value = ""
+            userlogpass = document.getElementById("entpass").value = ""
+        }
+        else{
+            alert("Your Password is Wrong")
+        }
+        }
+        else{
+            alert("Your Email is Wrong")
+        }
+    }
+
+</script>
+
+</body>
+</html>
