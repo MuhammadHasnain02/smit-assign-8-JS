@@ -11,45 +11,57 @@
 <div id="container">
 
     <h1>SignUp</h1>
+
     <br>
-    <label for="name">
         Name : 
         <input required type="text" id="name" placeholder="Enter Name" >
-    </label>
     <br><br><br>
 
-    <label for="email">
         Email : 
-        <input required type="text" id="email" placeholder="Enter Email" >
-    </label>
+        <input required type="email" id="email" placeholder="Enter Email" >
     <br><br><br>
 
-    <label for="password">
         Password : 
-        <input required type="text" id="password" placeholder="Enter Password" >
-    </label>
+        <input required type="password" id="password" placeholder="Enter Password" >
     <br><br><br><br>
 
-    <a href="login.html" onclick="signup()">SignUp</a>
+    <button onclick="signup()">SignUp</button>
     <br><br>
 </div>
-
-
 
 <script>
 
 function signup(){
     let username = document.getElementById("name").value
     let useremail = document.getElementById("email").value
-    let userpass = document.getElementById("password").value
+    let userpassword = document.getElementById("password").value
 
-    localStorage.setItem("UserName" , username)
-    localStorage.setItem("UserEmail" , useremail)
-    localStorage.setItem("UserPassword" , userpass)
+    let multipleuserArr = JSON.parse(localStorage.getItem(username))
 
-    username = document.getElementById("name").value = ""
-    useremail = document.getElementById("email").value = ""
-    userpass = document.getElementById("password").value = ""
+    let emailstore = {
+        name:  username,
+        email: useremail,    
+        password:userpassword
+    }
+
+    if(multipleuserArr){
+
+        for(let i=0; i < multipleuserArr.length; i++){
+
+            if(useremail == multipleuserArr[i].email){
+                alert("Email Already Exist Try Another Email")
+                return
+            }
+
+        }
+        multipleuserArr.push(emailstore)
+    }
+    else{
+        multipleuserArr = [emailstore]
+    }
+    
+    localStorage.setItem(username , JSON.stringify(multipleuserArr))
+    window.location.href = "login.html"
 }
 
 </script>
