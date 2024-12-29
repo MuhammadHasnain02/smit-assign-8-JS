@@ -42,10 +42,10 @@ function Login(){
     
                 if(userlogpass == localemail[i].password){
                     alert("You Are Sucessfully LogIn")
-                    return
-
+                    
                     userlogemail = document.getElementById("entemail").value = ""
                     userlogpass = document.getElementById("entpass").value = ""
+                    return
                 }
                 else{
                     alert("Your Password is Wrong")

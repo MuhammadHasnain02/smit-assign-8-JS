@@ -45,9 +45,18 @@ function signup(){
     let multipleuserArr = JSON.parse(localStorage.getItem("Multipleusers"))
 
     let emailstore = {
-        name:  username,
-        email: useremail,    
-        password:userpassword
+        name    : username,
+        email   : useremail,    
+        password: userpassword
+    }
+
+    if(useremail == ""){
+        alert("Enter Email Adress")
+        return
+    }   
+    else if(userpassword == ""){
+        alert("Enter Password")
+        return
     }
 
     if(multipleuserArr){
@@ -58,17 +67,19 @@ function signup(){
                 alert("Email Already Exist Try Another Email")
                 return
             }
-
         }
+
         multipleuserArr.push(emailstore)
     }
     else{
         multipleuserArr = [emailstore]
     }
-    
+
     localStorage.setItem("Multipleusers" , JSON.stringify(multipleuserArr))
     window.location.href = "login.html"
 }
+
+
 
 </script>
 
