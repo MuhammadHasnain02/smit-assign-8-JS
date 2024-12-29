@@ -31,25 +31,32 @@
 
 function Login(){
 
-    let userlogemail = document.getElementById("entemail").value
-    let storemail = localStorage.getItem()
-    
+    let userlogemail = document.getElementById("entemail").value    
     let userlogpass = document.getElementById("entpass").value
-    let storepass = localStorage.getItem()
+
+    let localemail = JSON.parse(localStorage.getItem("Multipleusers"))
+
+        for(let i=0; i < localemail.length; i++){
+
+            if(userlogemail == localemail[i].email){
     
-    if(userlogemail == storemail){
-    
-        if(userlogpass == storepass){
-            alert("You Are Sucessfully LogIn")
-            userlogemail = document.getElementById("entemail").value = ""
-            userlogpass = document.getElementById("entpass").value = ""
-        }
-        else{
-            alert("Your Password is Wrong")
-        }
-        }
-        else{
-            alert("Your Email is Wrong")
+                if(userlogpass == localemail[i].password){
+                    alert("You Are Sucessfully LogIn")
+                    return
+
+                    userlogemail = document.getElementById("entemail").value = ""
+                    userlogpass = document.getElementById("entpass").value = ""
+                }
+                else{
+                    alert("Your Password is Wrong")
+                    return
+                }
+            }
+            else{
+                alert("Your Email is Wrong")
+                return
+            }
+
         }
     }
 
